@@ -1,9 +1,7 @@
 package com.lyccccc.aop;
 
-import org.aspectj.lang.annotation.After;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.*;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 
@@ -12,16 +10,31 @@ import org.springframework.stereotype.Component;
  */
 @Aspect
 public class Audience {
-    @Pointcut("execution(* com.lyccccc.aop.Perform.perform(..))")
-    public void performance(){}
+    @Pointcut("execution(* com.lyccccc.aop.Perform.perform(String)) && args(name)")
+    public void performance(String name){}
 
-    @Before("performance()")
-    public void keepSilent(){
+    @Before("performance(name)")
+    public void keepSilent(String name){
+        System.out.println("before : " + name);
         System.out.println("keepSilent...");
     }
 
-    @After("performance()")
-    public void applaud(){
+    @After("performance(name)")
+    public void applaud(String name){
+        System.out.println("after : " + name);
         System.out.println("applauding...");
     }
+
+//    @Around("performance()")
+//    public void watch(ProceedingJoinPoint jp){
+//        try{
+//            System.out.println("keep silent!");
+//            System.out.println("turn off your phone!");
+//            jp.proceed();
+//            System.out.println("applauding!");
+//        }catch (Throwable throwable){
+//            System.out.println("demanding  a refund!");
+//        }
+//
+//    }
 }

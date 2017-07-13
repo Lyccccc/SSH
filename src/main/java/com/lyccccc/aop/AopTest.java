@@ -18,6 +18,6 @@ public class AopTest {
 
     @Test
     public void aopTest(){
-        perform.perform();
+        perform.perform("lalalala");
     }
 }

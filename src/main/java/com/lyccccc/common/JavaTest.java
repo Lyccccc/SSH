@@ -7,7 +7,6 @@ import com.sun.org.apache.xpath.internal.SourceTree;
  */
 public class JavaTest {
     public static void main(String[] args) {
-        int i = 233333333;
-        System.out.println(Integer.toBinaryString(i));
+        System.out.println("AAAAXXXXXa Y(*&^&%%   AAAAXXXa".replaceAll("^AAAA","a"));
     }
 }
