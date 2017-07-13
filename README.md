@@ -1,2 +1,3 @@
-# spring
-simple spring project
+# ssh project
+pure annotation-driven project
+SpringMVC + Spring + Hibernate
